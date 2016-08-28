@@ -1,0 +1,3 @@
+dimporter_homepage:
+    path:     /
+    defaults: { _controller: DimporterBundle:Default:index }
