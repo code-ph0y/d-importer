@@ -1,0 +1,25 @@
+{
+  "name": "dimporter",
+  "homepage": "https://github.com/code-ph0y/DimporterBundle",
+  "authors": [
+    "Ross Moroney <code.ph0y@googlemail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.7",
+    "angular": "angularjs#~1.5.8",
+    "handsontable": "~0.26.1"
+  }
+}
