@@ -1,18 +1,18 @@
-# DimporterBundle
+# data-importer
 Making Data Importing Simple.
 
 This project has been developed to run on the [Symfony Framework](http://symfony.com/what-is-symfony)
 
-##Installation
+## Installation
 
-###Coming Soon
+### Coming Soon
 
 - Run Composer
 - Run Bower
 
-##Assets
+## Assets
 
-* [AngularJS 2](https://angularjs.org/)
+* [AngularJS](https://angularjs.org/)
 * [Twitter Bootstrap](http://getbootstrap.com/)
 * [Handsontable](https://handsontable.com/)
 * [Font Awesome](http://fontawesome.io/)
