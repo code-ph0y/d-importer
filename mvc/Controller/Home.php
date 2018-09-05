@@ -1,13 +1,13 @@
 <?php
 
-namespace Mvc\Controllers;
+namespace Mvc\Controller;
 
 use Mvc\Base\BaseController;
 
 class Home extends BaseController
 {
-    public function indexAction() {
-
-        return $this->render('index.html', array());
+    public function indexAction()
+    {
+        return $this->render('home/index.html', array());
     }
 }

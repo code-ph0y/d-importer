@@ -3,16 +3,20 @@
 namespace Mvc\Base;
 
 class BaseController {
+    protected $view = null;
+
+    public function __construct()
+    {
+        $this->view = new \Mvc\Base\BaseView();
+    }
 
     /**
-     * Render a View File
+     * Quick fuction to allow for $this->render
      *
-     * @param  string $view   [description]
-     * @param  mixed $params [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
-    public function render($view, $params)
-    {
-        require_once '';
+    public function render($view, $params = array(), $template = 'default.html.php') {
+        return $this->view->render($view, $params, $template);
     }
+
 }
