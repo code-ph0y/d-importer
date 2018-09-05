@@ -3,11 +3,7 @@
 namespace Mvc\Base;
 
 class BaseView {
-
-    public function __construct() {
-
-    }
-
+    
     /**
      * Render the view file and pass it to the templates
      *
@@ -29,4 +25,5 @@ class BaseView {
             echo $body;
         }
     }
+
 }

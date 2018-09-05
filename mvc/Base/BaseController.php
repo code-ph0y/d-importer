@@ -13,7 +13,7 @@ class BaseController {
     /**
      * Quick fuction to allow for $this->render
      *
-     * @return [type] [description]
+     * @return string
      */
     public function render($view, $params = array(), $template = 'default.html.php') {
         return $this->view->render($view, $params, $template);
