@@ -9,7 +9,9 @@
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="assets/handsontable/dist/handsontable.full.min.css" />
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+
         <link rel="stylesheet" href="assets/my-app/css/style.css" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,11 +33,19 @@
 
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="import">Import File</a>
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-2" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-secondary">
+                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                    <button type="button" class="btn btn-secondary">
+                                        <i class="fa fa-table" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -54,5 +64,9 @@
         <script src="assets/jquery/dist/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="assets/handsontable/dist/handsontable.full.min.js"></script>
+
+        <script src="assets/my-app/js/main.js"></script>
     </body>
 </html>
