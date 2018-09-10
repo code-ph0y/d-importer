@@ -4,10 +4,10 @@ namespace Mvc\Controller;
 
 use Mvc\Base\BaseController;
 
-class Home extends BaseController
+class Upload extends BaseController
 {
     public function actionIndex()
     {
-        return $this->render('home/index.html', array());
+        return $this->render('upload/index.html', array());
     }
 }

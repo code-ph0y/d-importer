@@ -6,4 +6,4 @@ $config['environment'] = 'dev';
 $config['default_controller'] = 'Home';
 
 // Get the default action
-$config['default_action'] = 'indexAction';
+$config['default_action'] = 'actionIndex';

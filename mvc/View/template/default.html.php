@@ -8,11 +8,12 @@
         <title>Data Importer</title>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="assets/handsontable/dist/handsontable.full.min.css" />
-        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="<?php echo assetUrl('bootstrap/dist/css/bootstrap.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo assetUrl('handsontable/dist/handsontable.full.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo assetUrl('font-awesome/css/font-awesome.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo assetUrl('dropzone/dist/min/dropzone.min.css'); ?>" />
 
-        <link rel="stylesheet" href="assets/my-app/css/style.css" />
+        <link rel="stylesheet" href="<?php echo assetUrl('my-app/css/style.css'); ?>" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,12 +62,12 @@
         </main>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="assets/jquery/dist/jquery.min.js"></script>
+        <script src="<?php echo assetUrl('jquery/dist/jquery.min.js'); ?>"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="<?php echo assetUrl('bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo assetUrl('dropzone/dist/min/dropzone.min.js'); ?>"></script>
+        <script src="<?php echo assetUrl('handsontable/dist/handsontable.full.min.js'); ?>"></script>
 
-        <script src="assets/handsontable/dist/handsontable.full.min.js"></script>
-
-        <script src="assets/my-app/js/main.js"></script>
+        <script src="<?php echo assetUrl('my-app/js/main.js'); ?>"></script>
     </body>
 </html>

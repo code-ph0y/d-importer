@@ -3,7 +3,7 @@
 namespace Mvc\Base;
 
 class BaseView {
-    
+
     /**
      * Render the view file and pass it to the templates
      *
@@ -20,10 +20,10 @@ class BaseView {
         $body = file_get_contents('mvc/View/' . $view, FILE_USE_INCLUDE_PATH);
 
         if (file_exists('mvc/View/template/' . $template)) {
+            require 'mvc/Base/BaseViewHelper.php';
             require 'mvc/View/template/' . $template;
         } else {
             echo $body;
         }
     }
-
 }
