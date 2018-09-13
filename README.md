@@ -1,15 +1,17 @@
-# data-importer
+# Data Importer (data-importer)
 
-Making Data Importing Simple.
+Making data importing simple!
 
-##Installation
+Data Importer is a web application that will allow the user to upload data from common formats, this will ease the process of importing data to a new system.
 
-###Coming Soon
+## Installation
+
+### Coming Soon
 
 - Run Composer
 - Run Bower
 
-##Assets
+## Assets
 
 * [Twitter Bootstrap](http://getbootstrap.com/)
 * [Handsontable](https://handsontable.com/)
