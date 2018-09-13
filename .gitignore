@@ -44,3 +44,7 @@ assets/*
 
 !assets/file
 !assets/my-app/*
+
+/vendor/
+
+composer.lock

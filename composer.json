@@ -1,0 +1,18 @@
+{
+    "name": "code-ph0y/data-importer",
+    "description": "Making Data Importing Simple.",
+    "type": "project",
+    "require": {
+        "doctrine/dbal": "^2.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    },
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Ross Moroney",
+            "email": "code.ph0y@googlemail.com"
+        }
+    ]
+}

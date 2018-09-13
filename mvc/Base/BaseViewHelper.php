@@ -3,9 +3,9 @@
 /*
  * Get the Base URL
  *
- * @param  boolean $atRoot 
- * @param  boolean $atCore 
- * @param  boolean $parse  
+ * @param  boolean $atRoot
+ * @param  boolean $atCore
+ * @param  boolean $parse
  * @return string
  */
 function baseUrl($atRoot = false, $atCore = false, $parse = false)
