@@ -2,7 +2,8 @@
 
 namespace Mvc\Controller;
 
-use Mvc\Base\BaseController;
+use Mvc\Base\Controller as BaseController;
+use Mvc\Helper\Input;
 
 class Home extends BaseController
 {

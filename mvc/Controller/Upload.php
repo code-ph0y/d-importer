@@ -2,10 +2,15 @@
 
 namespace Mvc\Controller;
 
-use Mvc\Base\BaseController;
+use Mvc\Base\Controller as BaseController;
+use Mvc\Helper\Url;
 
 class Upload extends BaseController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function actionIndex()
     {
@@ -19,6 +24,18 @@ class Upload extends BaseController
      */
     public function actionSave()
     {
-        // stub for Upload actionSave
+        $link = new Url();
+
+        $file = $this->input->file('file');
+
+        $path = $this->config->get('upload_dir') . basename($file->getName());
+
+        if ($file->move($path)) {
+            $this->flashMsg('File upload success', 'success');
+        } else{
+            $this->flashMsg('There was an error uploading the file, please try again!', 'error');
+        }
+
+        $this->redirect($link->baseUrl());
     }
 }

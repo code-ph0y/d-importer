@@ -2,12 +2,27 @@
 
 namespace Mvc\Base;
 
-class BaseController {
-    protected $view = null;
+use \Mvc\Base\Config;
+use \Mvc\Base\View;
+use \Mvc\Helper\Input;
+use \Mvc\Helper\Session;
 
+class Controller {
+
+    protected $config  = null;
+    protected $input   = null;
+    protected $session = null;
+    protected $view    = null;
+
+    /**
+     * Load base controller variables
+     */
     public function __construct()
     {
-        $this->view = new \Mvc\Base\BaseView();
+        $this->config  = new Config();
+        $this->session = new Session();
+        $this->input   = new Input();
+        $this->view    = new View();
     }
 
     /**
@@ -59,6 +74,6 @@ class BaseController {
      * @return void
      */
     public function flashMsg($msg, $type) {
-        // stub for flashMsg
+        //$this->session->set('flashMsg', array('msg' => $msg, 'type' => $type), 1);
     }
 }

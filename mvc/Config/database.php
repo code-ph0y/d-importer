@@ -1,8 +1,9 @@
 <?php
 
     $config['database'] = array(
-        'host'    => 'host',
-        'user'    => 'username',
-        'pass'    => 'password',
-        'db_name' => 'database name'
+        'driver'   => 'mysql',
+        'hostname' => 'host',
+        'username' => 'username',
+        'password' => 'password',
+        'db_name'  => 'database_name'
     );

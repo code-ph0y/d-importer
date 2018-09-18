@@ -14,5 +14,14 @@
             "name": "Ross Moroney",
             "email": "code.ph0y@googlemail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mvc\\": "mvc/",
+            "Mvc\\Base\\": "mvc/Base/",
+            "Mvc\\Controller\\": "mvc/Controller/",
+            "Mvc\\Helper\\": "mvc/Helper/",
+            "Mvc\\Model\\": "mvc/Model/"
+        }
+    }
 }

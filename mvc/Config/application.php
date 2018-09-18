@@ -6,4 +6,7 @@ $config['environment'] = 'dev';
 $config['default_controller'] = 'Home';
 
 // Get the default action
-$config['default_action'] = 'actionIndex';
+$config['default_action'] = 'Index';
+
+// The upload question
+$config['upload_dir'] = BASE_DIR . '/data/';

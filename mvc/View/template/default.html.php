@@ -8,12 +8,12 @@
         <title>Data Importer</title>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="<?php echo assetUrl('bootstrap/dist/css/bootstrap.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo assetUrl('handsontable/dist/handsontable.full.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo assetUrl('font-awesome/css/font-awesome.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo assetUrl('dropzone/dist/min/dropzone.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $view->assetUrl('bootstrap/dist/css/bootstrap.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $view->assetUrl('handsontable/dist/handsontable.full.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $view->assetUrl('font-awesome/css/font-awesome.min.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $view->assetUrl('dropzone/dist/min/dropzone.min.css'); ?>" />
 
-        <link rel="stylesheet" href="<?php echo assetUrl('my-app/css/style.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $view->assetUrl('my-app/css/style.css'); ?>" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,7 +26,7 @@
     <body>
         <header class="header migrate mt-5" id="top">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-                <a class="navbar-brand" href="<?php echo baseUrl(); ?>">Data Importer</a>
+                <a class="navbar-brand" href="<?php echo $view->baseUrl(); ?>">Data Importer</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,12 +62,12 @@
         </main>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="<?php echo assetUrl('jquery/dist/jquery.min.js'); ?>"></script>
+        <script src="<?php echo $view->assetUrl('jquery/dist/jquery.min.js'); ?>"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="<?php echo assetUrl('bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
-        <script src="<?php echo assetUrl('dropzone/dist/min/dropzone.min.js'); ?>"></script>
-        <script src="<?php echo assetUrl('handsontable/dist/handsontable.full.min.js'); ?>"></script>
+        <script src="<?php echo $view->assetUrl('bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo $view->assetUrl('dropzone/dist/min/dropzone.min.js'); ?>"></script>
+        <script src="<?php echo $view->assetUrl('handsontable/dist/handsontable.full.min.js'); ?>"></script>
 
-        <script src="<?php echo assetUrl('my-app/js/main.js'); ?>"></script>
+        <script src="<?php echo $view->assetUrl('my-app/js/main.js'); ?>"></script>
     </body>
 </html>
