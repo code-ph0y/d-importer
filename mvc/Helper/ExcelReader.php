@@ -566,7 +566,7 @@ class Excel_Reader
 		return dechex($d);
 	}
 
-	function dumpHexData($data, $pos, $length)
+	public function dumpHexData($data, $pos, $length)
 	{
 		$info = "";
 
@@ -577,7 +577,7 @@ class Excel_Reader
 		return $info;
 	}
 
-	function getCol($col)
+	public function getCol($col)
 	{
 		if (is_string($col)) {
 			$col = strtolower($col);
@@ -613,7 +613,7 @@ class Excel_Reader
 	}
 
 	/**
-	 * Alias of val fucnction
+	 * Alias of val function
 	 *
 	 * @param  mixed  $row     The Row
 	 * @param  mixed  $col     The Column
@@ -718,7 +718,7 @@ class Excel_Reader
 
 	// GET THE CSS FOR FORMATTING
 	// ==========================
-	function style($row, $col, $sheet = 0, $properties = '')
+	public function style($row, $col, $sheet = 0, $properties = '')
 	{
 		$css  = "";
 		$font = $this->font($row, $col, $sheet);
@@ -823,24 +823,24 @@ class Excel_Reader
 
 	// FORMAT PROPERTIES
 	// =================
-	function format($row, $col, $sheet = 0)
+	public function format($row, $col, $sheet = 0)
 	{
 		return $this->info($row, $col, 'format', $sheet);
 	}
 
-	function formatIndex($row, $col, $sheet = 0)
+	public function formatIndex($row, $col, $sheet = 0)
 	{
 		return $this->info($row, $col, 'formatIndex', $sheet);
 	}
 
-	function formatColor($row, $col, $sheet = 0)
+	public function formatColor($row, $col, $sheet = 0)
 	{
 		return $this->info($row, $col, 'formatColor', $sheet);
 	}
 
 	// CELL (XF) PROPERTIES
 	// ====================
-	function xfRecord($row, $col, $sheet = 0)
+	public function xfRecord($row, $col, $sheet = 0)
 	{
 		$xfIndex = $this->info($row, $col, 'xfIndex', $sheet);
 		if ($xfIndex!="") {
@@ -849,7 +849,7 @@ class Excel_Reader
 		return null;
 	}
 
-	function xfProperty($row, $col, $sheet, $prop)
+	public function xfProperty($row, $col, $sheet, $prop)
 	{
 		$xfRecord = $this->xfRecord($row, $col, $sheet);
 
@@ -860,59 +860,59 @@ class Excel_Reader
 		return "";
 	}
 
-	function align($row, $col, $sheet = 0)
+	public function align($row, $col, $sheet = 0)
 	{
 		return $this->xfProperty($row, $col, $sheet, 'align');
 	}
 
-	function bgColor($row, $col, $sheet = 0)
+	public function bgColor($row, $col, $sheet = 0)
 	{
 		return $this->xfProperty($row, $col, $sheet, 'bgColor');
 	}
 
-	function borderLeft($row, $col, $sheet = 0)
+	public function borderLeft($row, $col, $sheet = 0)
 	{
 		return $this->xfProperty($row, $col, $sheet, 'borderLeft');
 	}
 
-	function borderRight($row, $col, $sheet = 0)
+	public function borderRight($row, $col, $sheet = 0)
 	{
 		return $this->xfProperty($row, $col, $sheet, 'borderRight');
 	}
 
-	function borderTop($row, $col, $sheet = 0)
+	public function borderTop($row, $col, $sheet = 0)
 	{
 		return $this->xfProperty($row, $col, $sheet, 'borderTop');
 	}
 
-	function borderBottom($row, $col, $sheet = 0)
+	public function borderBottom($row, $col, $sheet = 0)
 	{
 		return $this->xfProperty($row, $col, $sheet, 'borderBottom');
 	}
 
-	function borderLeftColor($row, $col, $sheet = 0)
+	public function borderLeftColor($row, $col, $sheet = 0)
 	{
 		return $this->colors[$this->xfProperty($row, $col, $sheet, 'borderLeftColor')];
 	}
 
-	function borderRightColor($row, $col, $sheet = 0)
+	public function borderRightColor($row, $col, $sheet = 0)
 	{
 		return $this->colors[$this->xfProperty($row, $col, $sheet, 'borderRightColor')];
 	}
 
-	function borderTopColor($row, $col, $sheet = 0)
+	public function borderTopColor($row, $col, $sheet = 0)
 	{
 		return $this->colors[$this->xfProperty($row, $col, $sheet, 'borderTopColor')];
 	}
 
-	function borderBottomColor($row, $col, $sheet = 0)
+	public function borderBottomColor($row, $col, $sheet = 0)
 	{
 		return $this->colors[$this->xfProperty($row, $col, $sheet, 'borderBottomColor')];
 	}
 
 	// FONT PROPERTIES
 	// ===============
-	function fontRecord($row, $col, $sheet = 0)
+	public function fontRecord($row, $col, $sheet = 0)
 	{
 	    $xfRecord = $this->xfRecord($row,$col,$sheet);
 		if ($xfRecord!=null) {
@@ -924,7 +924,7 @@ class Excel_Reader
 		return null;
 	}
 
-	function fontProperty($row, $col, $sheet = 0,$prop) {
+	public function fontProperty($row, $col, $sheet = 0,$prop) {
 		$font = $this->fontRecord($row,$col,$sheet);
 		if ($font!=null) {
 			return $font[$prop];
@@ -932,11 +932,11 @@ class Excel_Reader
 		return false;
 	}
 
-	function fontIndex($row, $col, $sheet = 0) {
+	public function fontIndex($row, $col, $sheet = 0) {
 		return $this->xfProperty($row, $col, $sheet, 'fontIndex');
 	}
 
-	function color($row, $col, $sheet = 0) {
+	public function color($row, $col, $sheet = 0) {
 		$formatColor = $this->formatColor($row,$col,$sheet);
 
 		if ($formatColor!="") {
@@ -947,7 +947,7 @@ class Excel_Reader
                 return $this->rawColor($ci);
     }
 
-	function rawColor($ci)
+	public function rawColor($ci)
 	{
 		if (($ci <> 0x7FFF) && ($ci <> '')) {
 			return $this->colors[$ci];
@@ -956,34 +956,34 @@ class Excel_Reader
 		return '';
 	}
 
-	function bold($row, $col, $sheet = 0)
+	public function bold($row, $col, $sheet = 0)
 	{
 		return $this->fontProperty($row, $col, $sheet, 'bold');
 	}
 
-	function italic($row, $col, $sheet = 0)
+	public function italic($row, $col, $sheet = 0)
 	{
 		return $this->fontProperty($row, $col, $sheet, 'italic');
 	}
 
-	function underline($row, $col, $sheet = 0)
+	public function underline($row, $col, $sheet = 0)
 	{
 		return $this->fontProperty($row, $col, $sheet, 'under');
 	}
 
-	function height($row, $col, $sheet = 0)
+	public function height($row, $col, $sheet = 0)
 	{
 		return $this->fontProperty($row, $col, $sheet, 'height');
 	}
 
-	function font($row, $col, $sheet = 0)
+	public function font($row, $col, $sheet = 0)
 	{
 		return $this->fontProperty($row, $col, $sheet, 'font');
 	}
 
 	// DUMP AN HTML TABLE OF THE ENTIRE XLS DATA
 	// =========================================
-	function dump($row_numbers = false, $col_letters = false, $sheet = 0, $table_class = 'excel')
+	public function dump($row_numbers = false, $col_letters = false, $sheet = 0, $table_class = 'excel')
 	{
 		$out = "<table class=\"$table_class\" cellspacing=0>";
 
@@ -1072,7 +1072,7 @@ class Excel_Reader
 	// --------------
 	// END PUBLIC API
 
-	function read16bitstring($data, $start) {
+	public function read16bitstring($data, $start) {
 		$len = 0;
 
 		while (ord($data[$start + $len]) + ord($data[$start + $len + 1]) > 0) {
@@ -1195,7 +1195,7 @@ class Excel_Reader
 	/**
 	 * Set the default number format
 	 */
-	function setDefaultFormat($sFormat)
+	public function setDefaultFormat($sFormat)
 	{
 		$this->_defaultFormat = $sFormat;
 	}
@@ -1203,7 +1203,7 @@ class Excel_Reader
 	/**
 	 * Force a column to use a certain format
 	 */
-	function setColumnFormat($column, $sFormat)
+	public function setColumnFormat($column, $sFormat)
 	{
 		$this->_columnsFormat[$column] = $sFormat;
 	}
@@ -1948,14 +1948,14 @@ class Excel_Reader
 		}
 	}
 
-	function isDate($spos)
+	public function isDate($spos)
 	{
 		$xfindex = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
 		return ($this->xfRecords[$xfindex]['type'] == 'date');
 	}
 
 	// Get the details for a particular cell
-	function _getCellDetails($spos, $numValue, $column)
+	private function _getCellDetails($spos, $numValue, $column)
 	{
 		$xfindex  = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
 		$xfrecord = $this->xfRecords[$xfindex];
@@ -2025,7 +2025,7 @@ class Excel_Reader
 		);
 	}
 
-	function createNumber($spos)
+	public function createNumber($spos)
 	{
 		$rknumhigh    = $this->_GetInt4d($this->data, $spos + 10);
 		$rknumlow     = $this->_GetInt4d($this->data, $spos + 6);
@@ -2049,7 +2049,7 @@ class Excel_Reader
 		return  $value;
 	}
 
-	function addcell($row, $col, $string, $info = null)
+	public function addcell($row, $col, $string, $info = null)
 	{
 		$this->sheets[$this->sn]['maxrow'] = max($this->sheets[$this->sn]['maxrow'], $row + $this->_rowoffset);
 		$this->sheets[$this->sn]['maxcol'] = max($this->sheets[$this->sn]['maxcol'], $col + $this->_coloffset);
