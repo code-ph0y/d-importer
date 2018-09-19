@@ -1,4 +1,7 @@
 <?php
+
+namespace Mvc\Helper;
+
 /**
  * A class for reading Microsoft Excel (97/2003) Spreadsheets.
  *
@@ -344,8 +347,10 @@ class OLERead
 /*
 * Main Class
 */
-class Excel_Reader
+class ExcelReader
 {
+	public $sheets = array();
+
 	// MK: Added to make data retrieval easier
 	protected $colnames         = array();
 	protected $colindexes       = array();
@@ -363,7 +368,6 @@ class Excel_Reader
    	protected $rowInfo = array();
 
 	protected $sst = array();
-	protected $sheets = array();
 
 	protected $version;
 	protected $data;
@@ -2099,10 +2103,10 @@ class Excel_Reader
 
 		if ($this->_defaultEncoding) {
 			switch ($this->_encoderFunction) {
-				case 'iconv' :
+				case 'iconv':
 					$result = iconv($from, $this->_defaultEncoding, $string);
 					break;
-				case 'mb_convert_encoding' :
+				case 'mb_convert_encoding':
 					$result = mb_convert_encoding($string, $this->_defaultEncoding, $from );
 					break;
 			}
