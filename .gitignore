@@ -52,3 +52,4 @@ composer.lock
 data/*
 
 !data/file
+!data/example.xls

@@ -4,9 +4,9 @@ namespace Mvc\Helper;
 
 class Input
 {
-    protected $getParams  = null;
-    protected $postParams = null;
-    protected $fileParams = null;
+    protected $getParams  = array();
+    protected $postParams = array();
+    protected $fileParams = array();
 
     public function __construct() {
         $this->getParams  = $_GET;
@@ -34,6 +34,7 @@ class Input
      * @return mixed
      */
     public function get($key) {
+        return ($key == false) ? $this->getParams : $this->getParams[$key];
         return $this->getParams[$key];
     }
 
@@ -43,8 +44,8 @@ class Input
      * @param  string $key Name of the key
      * @return mixed
      */
-    public function post($key) {
-        return $this->postParams[$key];
+    public function post($key = false) {
+        return ($key == false) ? $this->postParams : $this->postParams[$key];
     }
 
     /**
