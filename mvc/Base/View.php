@@ -25,7 +25,10 @@ class View {
         extract($params);
 
         // Get the file contents of the view file
-        $body = file_get_contents('mvc/View/' . $filename, FILE_USE_INCLUDE_PATH);
+        ob_start();
+        include 'mvc/View/' . $filename;
+        $body = ob_get_clean();
+
 
         if (file_exists('mvc/View/template/' . $template)) {
             require 'mvc/View/template/' . $template;

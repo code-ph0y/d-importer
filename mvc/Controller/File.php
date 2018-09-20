@@ -23,7 +23,7 @@ class File extends BaseController
 
         for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
         	for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
-                $outputArray[$i][$j] = (!empty($data->sheets[0]['cells'][$i][$j])) ? $data->sheets[0]['cells'][$i][$j] : '';
+                $outputArray[$i-1][$j-1] = (!empty($data->sheets[0]['cells'][$i][$j])) ? $data->sheets[0]['cells'][$i][$j] : '';
         	}
         }
 
