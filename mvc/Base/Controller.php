@@ -6,6 +6,7 @@ use \Mvc\Base\Config;
 use \Mvc\Base\View;
 use \Mvc\Helper\Input;
 use \Mvc\Helper\Session;
+use \Mvc\Base\Model;
 
 class Controller {
 
@@ -13,6 +14,7 @@ class Controller {
     protected $input   = null;
     protected $session = null;
     protected $view    = null;
+    protected $model   = null;
 
     /**
      * Load base controller variables
@@ -23,6 +25,7 @@ class Controller {
         $this->session = new Session();
         $this->input   = new Input();
         $this->view    = new View();
+        $this->model   = new Model();
     }
 
     /**

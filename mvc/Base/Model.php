@@ -3,20 +3,25 @@
 namespace Mvc\Base;
 
 use Doctrine\DBAL\Configuration;
+use \Doctrine\DBAL\DriverManager;
 
 class Model
 {
-    protected $connection;
+    protected $conn;
 
     //Constructor
     public function __construct()
     {
-        $config = new Configuration();
+        $dbalConfig = new Configuration();
 
         $connectionParams = array(
-            'url' => $config['driver'] . '://' . $config['username'] . ':' . $config['password'] . '@' . $config['hostname'] . '/' . $config['db_name']
+            'dbname'   => $config['db_name'],
+            'user'     => $config['username'],
+            'password' => $config['password'],
+            'host'     => $config['hostname'],
+            'driver'   => $config['driver']
         );
 
-        $this->connection = \Doctrine\DBAL\DriverManager::getConnection($connectionParams, $config);
+        $this->conn = DriverManager::getConnection($connectionParams, $dbalConfig);
     }
 }
