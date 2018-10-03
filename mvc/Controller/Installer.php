@@ -34,7 +34,7 @@ class Installer extends BaseController
 
         // Check and validate required fields
         foreach ($requiredFields as $field) {
-            if (!isset($postVars[$field])) {
+            if (!isset($postVars[$field]) || empty($postVars[$field])) {
                 $errors[] = ucfirst($field) . ' field is missing.';
             }
         }
