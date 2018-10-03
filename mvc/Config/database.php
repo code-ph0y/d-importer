@@ -1,9 +1,5 @@
 <?php
 
-    $config['database'] = array(
-        'driver'   => 'mysql',
-        'hostname' => 'host',
-        'username' => 'username',
-        'password' => 'password',
-        'db_name'  => 'database_name'
-    );
+    if (file_exists(BASE_DIR . '/data/database.php')) {
+        require(BASE_DIR . '/data/database.php');
+    }

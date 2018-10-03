@@ -48,44 +48,70 @@ class Session
             $this->sessionState = session_start();
         }
 
+        $this->incrementTtl();
+
         return $this->sessionState;
     }
 
     /**
-    *    Stores datas in the session.
-    *    Example: $instance->foo = 'bar';
-    *
-    *    @param     name    Name of the datas.
-    *    @param     value    Your datas.
-    *    @return    void
-    **/
-    public function __set($name, $value)
+     * Get all session variable
+     *
+     * @return mixed
+     */
+    public function getAll()
     {
-        $_SESSION[$name] = $value;
+        return $_SESSION;
     }
 
     /**
-    *    Gets datas from the session.
-    *    Example: echo $instance->foo;
-    *
-    *    @param    name    Name of the datas to get.
-    *    @return    mixed    Datas stored in session.
-    **/
-    public function __get($name)
+     * Check to see if the session has a variable set
+     *
+     * @param  string  $key The session key too check
+     * @return boolean
+     */
+    public function has($key) {
+        return isset($_SESSION[$key]);
+    }
+
+    /**
+     * Get a session variable
+     *
+     * @param  string $key The variable too get
+     * @return mixed
+     */
+    public function get($key)
     {
-        if (isset($_SESSION[$name])) {
-            return $_SESSION[$name];
+        if ($this->has($key)) {
+            return $_SESSION[$key];
+        }
+
+        return false;
+    }
+
+    /**
+     * Set a session variable
+     *
+     * @param string $key           Name of session variable to set
+     * @param mixed  $value         Value to set
+     * @param int    $timeToLive    The number of times it will be in the session before it is unset
+     */
+    public function set($key, $value, $timeToLive = null)
+    {
+        $_SESSION[$key] = $value;
+
+        if (!is_null($timeToLive)) {
+            $_SESSION['ttl_variable_' . $key] = $timeToLive;
         }
     }
 
-    public function __isset($name)
+    /**
+     * Unset a session variable
+     *
+     * @param string $key The key to unset
+     */
+    public function unset($key)
     {
-        return isset($_SESSION[$name]);
-    }
-
-    public function __unset($name)
-    {
-        unset($_SESSION[$name]);
+        unset($_SESSION[$key]);
     }
 
     /**
@@ -103,5 +129,33 @@ class Session
         }
 
         return false;
+    }
+
+    /**
+     * Increment and Unset Session Variables that have a Time To Live
+     *
+     * @return void
+     */
+    public function incrementTtl() {
+        $params = $this->getAll();
+
+        // find all time to live variables and increment
+        foreach ($params as $key => $value) {
+            if (false !== stripos($key, 'ttl_variable_')) {
+                $updated_value = (int) --$value;
+
+                if ($updated_value < 0) {
+                    // unset the variable if its counter is
+                    $this->unset($key);
+
+                    $variable = str_replace('ttl_variable_', '', $key);
+
+                    $this->unset($variable);
+                }
+
+                // Update value
+                $this->set($key, $updated_value);
+            }
+        }
     }
 }

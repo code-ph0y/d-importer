@@ -17,7 +17,35 @@ class App
     public function run()
     {
         // Create new input helper to get query_string
-        $input = new Input();
+        $input  = new Input();
+
+        // Check the correct controller and action is going to load based on the URI
+        if ($input->has('query_string')) {
+
+            $uri = explode('/', $input->get('query_string'));
+
+            if (count($uri) < 2) {
+                $uri[] = $action;
+            }
+
+            list($controller, $action) = $uri;
+        }
+
+        // Run Installer if database config hasn't been configured
+        if (!file_exists(BASE_DIR . '/data/database.php')) {
+            if (empty($controller) && empty($action)) {
+                $controller = 'Installer';
+                $action     = 'Index';
+            }
+
+            $format = 'Mvc\Controller\%s';
+            $controller = sprintf($format, ucfirst($controller));
+
+            $this->controller = new $controller();
+
+            // run the controller action
+            return $this->controller->{'action' . ucfirst($action)}();
+        }
 
         // Load the config files
         $config = new Config();
@@ -36,18 +64,6 @@ class App
         // Get the default controller and action
         $controller = $config->get('default_controller');
         $action     = $config->get('default_action');
-
-        // Check the correct controller and action is going to load based on the URI
-        if ($input->has('query_string')) {
-
-            $uri = explode('/', $input->get('query_string'));
-
-            if (count($uri) < 2) {
-                $uri[] = $action;
-            }
-
-            list($controller, $action) = $uri;
-        }
 
         $format = 'Mvc\Controller\%s';
         $controller = sprintf($format, ucfirst($controller));

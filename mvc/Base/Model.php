@@ -2,26 +2,25 @@
 
 namespace Mvc\Base;
 
+use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Configuration;
-use \Doctrine\DBAL\DriverManager;
+use Doctrine\Common\EventManager;
+
+use Mvc\Base\Config;
 
 class Model
 {
-    protected $conn;
+    protected $conn = null;
 
-    //Constructor
     public function __construct()
     {
-        $dbalConfig = new Configuration();
+        $config       = new Config();
+        $dbalConfig   = new Configuration();
+        $eventManager = new EventManager();
 
-        $connectionParams = array(
-            'dbname'   => $config['db_name'],
-            'user'     => $config['username'],
-            'password' => $config['password'],
-            'host'     => $config['hostname'],
-            'driver'   => $config['driver']
-        );
-
-        $this->conn = DriverManager::getConnection($connectionParams, $dbalConfig);
+        if ($config->has('database')) {
+            $connectionParams = $config->get('database');
+            $this->conn = DriverManager::getConnection($connectionParams, $dbalConfig, $eventManager);
+        }
     }
 }

@@ -10,11 +10,11 @@ class Home extends BaseController
     public function actionIndex()
     {
         // Get files uploaded
-        $data_files = scandir(BASE_DIR . '/data');
+        $dataFiles = scandir(BASE_DIR . '/data');
 
         // Unset unwanted
-        unset($data_files[0], $data_files[1]);
+        unset($dataFiles[0], $dataFiles[1]);
 
-        return $this->render('home/index.html', array('files' => $data_files));
+        return $this->render('home/index.html', array('files' => $dataFiles));
     }
 }

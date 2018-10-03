@@ -6,6 +6,7 @@ use \Mvc\Base\Config;
 use \Mvc\Base\View;
 use \Mvc\Helper\Input;
 use \Mvc\Helper\Session;
+use \Mvc\Helper\Url;
 use \Mvc\Base\Model;
 
 class Controller {
@@ -23,9 +24,18 @@ class Controller {
     {
         $this->config  = new Config();
         $this->session = new Session();
+
+        $this->session->startSession();
+
         $this->input   = new Input();
-        $this->view    = new View();
-        $this->model   = new Model();
+
+        if ($this->session->has('redirectPost')) {
+            $this->input->setPost(false, $this->session->get('redirectPost'));
+            $this->session->unset('redirectPost');
+        }
+
+        $this->view  = new View();
+        $this->model = new Model();
     }
 
     /**
@@ -34,6 +44,9 @@ class Controller {
      * @return string
      */
     public function render($view, $params = array(), $template = 'default.html.php') {
+        // Get flash message
+        $params['flashMsg'] = $this->session->get('flashMsg');
+
         return $this->view->render($view, $params, $template);
     }
 
@@ -42,16 +55,21 @@ class Controller {
      *
      * @todo Get Base URL, Concat the Base URL with Route (Controller, Action), Test Array and String
      *
-     * @param  mixed   $url        Array or string
+     * @param  mixed   $url         Array or string
+     * @param  mixed   $params      Params too be sent
      * @param  integer $statusCode
      */
-    function redirect($url, $statusCode = 303)
+    function redirect($url, $params = array(), $statusCode = 303)
     {
+        $this->session->set('redirectPost', $params);
+
         if (is_array($url)) {
             $url = implode('/', $url);
         }
 
-        header('Location: ' . $url, true, $statusCode);
+        $urlHelper = new Url();
+
+        header('Location: ' . $urlHelper->baseUrl() . $url, true, $statusCode);
         die();
     }
 
@@ -72,11 +90,11 @@ class Controller {
      *
      * @todo create one time session var for flash_msg,
      *
-     * @param  string $msg  Flash Messsage
-     * @param  string $type Type of Message
+     * @param  string $message  Flash Messsage
+     * @param  string $type     Type of Message
      * @return void
      */
-    public function flashMsg($msg, $type) {
-        //$this->session->set('flashMsg', array('msg' => $msg, 'type' => $type), 1);
+    public function flashMsg($message, $type) {
+        $this->session->set('flashMsg', array('message' => $message, 'type' => $type), 1);
     }
 }

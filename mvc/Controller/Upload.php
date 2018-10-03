@@ -29,7 +29,7 @@ class Upload extends BaseController
         $file = $this->input->file('file');
 
         $path = $this->config->get('upload_dir') . basename($file->getName());
-
+        
         if ($file->move($path)) {
             $this->flashMsg('File upload success', 'success');
         } else{

@@ -13,8 +13,11 @@ class Config
      */
     public function __construct()
     {
+        if (file_exists('mvc/Config/database.php')) {
+            require 'mvc/Config/database.php';
+        }
+
         require 'mvc/Config/application.php';
-        require 'mvc/Config/database.php';
         require 'mvc/Config/route.php';
 
         $this->params = $config;

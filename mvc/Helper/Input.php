@@ -67,4 +67,19 @@ class Input
     public function has($key, $type = 'get') {
         return (isset($this->{$type . 'Params'}[$key])) ? true : false;
     }
+
+    /**
+     * Set post variables
+     *
+     * @param mixed $key   If key is false it will write over post variable
+     * @param mixed $value
+     */
+    public function setPost($key, $value)
+    {
+        if ($key == false) {
+            $this->postParams = $value;
+        } else {
+            $this->postParams[$key] = $value;
+        }
+    }
 }
