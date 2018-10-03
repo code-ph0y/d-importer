@@ -10,7 +10,7 @@ class Home extends BaseController
     public function actionIndex()
     {
         // Get files uploaded
-        $dataFiles = scandir(BASE_DIR . '/data');
+        $dataFiles = scandir(BASE_DIR . '/data/files/');
 
         // Unset unwanted
         unset($dataFiles[0], $dataFiles[1]);

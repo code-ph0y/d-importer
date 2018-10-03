@@ -14,10 +14,15 @@ class File extends BaseController
      */
     public function actionLoad()
     {
+        $filename = $this->input->post('filename');
+
         $data = new ExcelReader();
 
         $data->setOutputEncoding('CP1251');
-        $data->read('data/example.xls');
+
+        $upload_dir = $this->config->get('upload_dir');
+
+        $data->read($upload_dir . $filename);
 
         $outputArray = array();
 
@@ -28,5 +33,6 @@ class File extends BaseController
         }
 
         echo json_encode($outputArray);
+        exit;
     }
 }
