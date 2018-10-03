@@ -51,6 +51,7 @@ composer.lock
 
 data/*
 
+!data/.gitkeep
 !data/cache/.gitkeep
 !data/files/example.xls
 !data/database/.gitkeep
