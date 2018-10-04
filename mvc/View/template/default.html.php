@@ -67,6 +67,7 @@
         <script src="<?php echo $view->assetUrl('bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo $view->assetUrl('dropzone/dist/min/dropzone.min.js'); ?>"></script>
         <script src="<?php echo $view->assetUrl('handsontable/dist/handsontable.full.min.js'); ?>"></script>
+        <script src="<?php echo $view->assetUrl('Split.js/split.min.js'); ?>"></script>
 
         <script src="<?php echo $view->assetUrl('my-app/js/main.js'); ?>"></script>
     </body>

@@ -2,6 +2,11 @@ $(document).ready(function() {
 
     update_table();
 
+    Split(['#input-tpl', '#output-result'], {
+        direction: 'vertical'
+    });
+
+
     $('#data-file').on('change', function() {
         $.ajax({
             method: "POST",
