@@ -37,8 +37,8 @@
                         <li class="nav-item">
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-secondary">
-                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                    <button id="run-template" type="button" class="btn btn-secondary">
+                                        <i class="fa fa-play" aria-hidden="true"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group mr-2" role="group" aria-label="Second group">
@@ -68,6 +68,9 @@
         <script src="<?php echo $view->assetUrl('dropzone/dist/min/dropzone.min.js'); ?>"></script>
         <script src="<?php echo $view->assetUrl('handsontable/dist/handsontable.full.min.js'); ?>"></script>
         <script src="<?php echo $view->assetUrl('Split.js/split.min.js'); ?>"></script>
+        <script>
+            var baseurl = '<?php echo $view->baseUrl(); ?>';
+        </script>
 
         <script src="<?php echo $view->assetUrl('my-app/js/main.js'); ?>"></script>
     </body>

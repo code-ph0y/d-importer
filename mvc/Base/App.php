@@ -67,6 +67,13 @@ class App
             // Get the default controller and action
             $controller = $config->get('default_controller');
             $action     = $config->get('default_action');
+        } else if (empty($action)) {
+
+            if (!$config->has('default_action')) {
+                throw new \Exception('Default controller or default action not found');
+            }
+
+            $action     = $config->get('default_action');
         }
 
         $format = 'Mvc\Controller\%s';

@@ -27,7 +27,19 @@ body {
     cursor: ns-resize;
 }
 
-#input-tpl textarea, .split #output-result textarea {
+.gutter.gutter-horizontal {
+    background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==')
+}
+
+#data-view {
+    padding: 15px;
+}
+
+#input-tpl-panel, #output-result-panel {
+    padding: 15px;
+}
+
+#input-tpl-panel textarea, .split #output-result-panel textarea {
     width: 100%;
     height: 90%;
 }
