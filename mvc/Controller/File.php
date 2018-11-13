@@ -22,17 +22,7 @@ class File extends BaseController
 
         $upload_dir = $this->config->get('upload_dir');
 
-        $data->read($upload_dir . $filename);
-
-        $outputArray = array();
-
-        for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
-        	for ($j = 1; $j <= $data->sheets[0]['numCols']; $j++) {
-                $outputArray[$i-1][$j-1] = (!empty($data->sheets[0]['cells'][$i][$j])) ? $data->sheets[0]['cells'][$i][$j] : '';
-        	}
-        }
-
-        echo json_encode($outputArray);
+        echo json_encode($data->readToAssoc($upload_dir . $filename));
         exit;
     }
 }

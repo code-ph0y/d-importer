@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
     Split(['#data-view', '#template-view'], {
         direction: 'horizontal'
     });
@@ -29,7 +27,10 @@ $(document).ready(function() {
 
         ajax_request(
             baseurl + "runtemplate",
-            { template: $('#input-template').val() },
+            {
+                template: $('#input-template').val(),
+                data_file: $('#data-file').val()
+            },
             callback
         );
     });

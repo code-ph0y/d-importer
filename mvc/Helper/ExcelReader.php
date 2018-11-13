@@ -133,20 +133,7 @@ function GetInt4d($data, $pos)
 // http://uk.php.net/manual/en/function.getdate.php
 function gmgetdate($ts = null)
 {
-	$k = array('seconds','minutes','hours','mday','wday','mon','year','yday','weekday','month',0);
-	return(array_comb($k,explode(":",gmdate('s:i:G:j:w:n:Y:z:l:F:U',is_null($ts)?time():$ts))));
-}
-
-// Added for PHP4 compatibility
-function array_comb($array1, $array2)
-{
-	$out = array();
-
-	foreach ($array1 as $key => $value) {
-		$out[$value] = $array2[$key];
-	}
-
-	return $out;
+    return date('d/m/Y', $ts);
 }
 
 function v($data, $pos)
@@ -629,7 +616,7 @@ class ExcelReader
 		return $this->val($row, $col, $sheet);
 	}
 
-	public function info($row,$col,$type='',$sheet=0)
+	public function info($row, $col, $type='', $sheet=0)
 	{
 		$col = $this->getCol($col);
 
@@ -647,12 +634,12 @@ class ExcelReader
 
 	public function type($row, $col, $sheet = 0)
 	{
-		return $this->info($row,$col,'type',$sheet);
+		return $this->info($row, $col, 'type', $sheet);
 	}
 
 	public function raw($row, $col, $sheet = 0)
 	{
-		return $this->info($row,$col,'raw',$sheet);
+		return $this->info($row, $col, 'raw', $sheet);
 	}
 
 	public function rowspan($row, $col, $sheet = 0)
@@ -698,7 +685,7 @@ class ExcelReader
 		return $this->sheets[$sheet]['numCols'];
 	}
 
-	public function colwidth($col,$sheet=0)
+	public function colwidth($col, $sheet = 0)
 	{
 		// Col width is actually the width of the number 0. So we have to estimate and come close
 		return $this->colInfo[$sheet][$col]['width'] / 9142 * 200;
@@ -1085,6 +1072,24 @@ class ExcelReader
 
 		return substr($data, $start, $len);
 	}
+
+    public function readToAssoc($file_path)
+    {
+        $outputArray = array();
+
+        // Read excel
+        $this->setOutputEncoding('CP1251');
+        $this->read($file_path);
+
+        // Parse excel
+        for ($i = 1; $i <= $this->sheets[0]['numRows']; $i++) {
+            for ($j = 1; $j <= $this->sheets[0]['numCols']; $j++) {
+                $outputArray[$i-1][$j-1] = (!empty($this->sheets[0]['cells'][$i][$j])) ? $this->sheets[0]['cells'][$i][$j] : '';
+            }
+        }
+
+        return $outputArray;
+    }
 
 	// ADDED by Matt Kruse for better formatting
 	private function _format_value($format, $num, $f) {
@@ -1961,14 +1966,15 @@ class ExcelReader
 	// Get the details for a particular cell
 	private function _getCellDetails($spos, $numValue, $column)
 	{
-		$xfindex  = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
-		$xfrecord = $this->xfRecords[$xfindex];
-		$type     = $xfrecord['type'];
+		$xfindex     = ord($this->data[$spos + 4]) | ord($this->data[$spos + 5]) << 8;
+		$xfrecord    = $this->xfRecords[$xfindex];
 
+		$type        = $xfrecord['type'];
 		$format      = $xfrecord['format'];
 		$formatIndex = $xfrecord['formatIndex'];
 		$fontIndex   = $xfrecord['fontIndex'];
-		$formatColor = "";
+
+        $formatColor = '';
 		$rectype     = '';
 		$string      = '';
 		$raw         = '';
@@ -1979,22 +1985,10 @@ class ExcelReader
 
 		if ($type == 'date') {
 
-			// See http://groups.google.com/group/php-excel-reader-discuss/browse_frm/thread/9c3f9790d12d8e10/f2045c2369ac79de
-			$rectype       = 'date';
-			// Convert numeric value into a date
-			$utcDays       = floor($numValue - ($this->nineteenFour ? SPREADSHEET_EXCEL_READER_UTCOFFSETDAYS1904 : SPREADSHEET_EXCEL_READER_UTCOFFSETDAYS));
-			$utcValue      = ($utcDays) * SPREADSHEET_EXCEL_READER_MSINADAY;
-			$dateinfo      = gmgetdate($utcValue);
-
-			$raw           = $numValue;
-			$fractionalDay = $numValue - floor($numValue) + .0000001; // The .0000001 is to fix for php/excel fractional diffs
-
-			$totalseconds  = floor(SPREADSHEET_EXCEL_READER_MSINADAY * $fractionalDay);
-			$secs          = $totalseconds % 60;
-			$totalseconds -= $secs;
-			$hours         = floor($totalseconds / (60 * 60));
-			$mins          = floor($totalseconds / 60) % 60;
-			$string        = date ($format, mktime($hours, $mins, $secs, $dateinfo["mon"], $dateinfo["mday"], $dateinfo["year"]));
+            $rectype  = 'date';
+            $utcDays  = floor($numValue - ($this->nineteenFour ? SPREADSHEET_EXCEL_READER_UTCOFFSETDAYS1904 : SPREADSHEET_EXCEL_READER_UTCOFFSETDAYS));
+            $utcValue = ($utcDays) * SPREADSHEET_EXCEL_READER_MSINADAY;
+            $string   = date('d/m/Y', $utcValue);
 
 		} else if ($type == 'number') {
 

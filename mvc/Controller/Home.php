@@ -9,11 +9,14 @@ class Home extends BaseController
 {
     public function actionIndex()
     {
-        // Get files uploaded
-        $dataFiles = scandir(BASE_DIR . '/data/files/');
+        $dataFiles = array();
 
-        // Unset unwanted
-        unset($dataFiles[0], $dataFiles[1]);
+        // Get the files in the upload_dir directory
+        foreach(new \DirectoryIterator($this->config->get('upload_dir')) as $item) {
+           if (!$item->isDot() && $item->isFile()) {
+               $dataFiles[] = $item->getFilename();
+           }
+        }
 
         return $this->render('home/index.html', array('files' => $dataFiles));
     }

@@ -1,5 +1,6 @@
 <?php
 
+// Set Base Directory
 $config['environment'] = 'dev';
 
 // Get the default controller
@@ -9,4 +10,4 @@ $config['default_controller'] = 'Home';
 $config['default_action'] = 'Index';
 
 // The upload question
-$config['upload_dir'] = BASE_DIR . '/data/files/';
+$config['upload_dir'] = __DIR__  . '/../../data/files/uploaded/';
