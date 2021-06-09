@@ -13,11 +13,14 @@ class Home extends BaseController
 
         // Get the files in the upload_dir directory
         foreach(new \DirectoryIterator($this->config->get('upload_dir')) as $item) {
-           if (!$item->isDot() && $item->isFile()) {
+            if (!$item->isDot() && $item->isFile()) {
                $dataFiles[] = $item->getFilename();
-           }
+            }
         }
 
         return $this->render('home/index.html', array('files' => $dataFiles));
     }
+
+
+
 }

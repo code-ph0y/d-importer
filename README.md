@@ -9,7 +9,6 @@ Data Importer is a web application that will allow the user to upload data from 
 ### Coming Soon
 
 - Run Composer
-- Run Bower
 
 ## Assets
 

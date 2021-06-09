@@ -51,6 +51,15 @@ class Controller {
     }
 
     /**
+     * @param $input
+     * @return false|string
+     */
+    public function renderJson($params) {
+        $params['flashMsg'] = $this->session->get('flashMsg');
+        return $this->view->render('', $params, 'default.json.php');
+    }
+
+    /**
      * Redirect to URL
      *
      * @todo Get Base URL, Concat the Base URL with Route (Controller, Action), Test Array and String
@@ -94,7 +103,8 @@ class Controller {
      * @param  string $type     Type of Message
      * @return void
      */
-    public function flashMsg($message, $type) {
+    public function flashMsg($message, $type)
+    {
         $this->session->set('flashMsg', array('message' => $message, 'type' => $type), 1);
     }
 }

@@ -3,6 +3,7 @@
 namespace Mvc\Base;
 
 use Mvc\Helper\Url;
+use Mvc\Base\Config;
 
 class View {
 
@@ -20,6 +21,8 @@ class View {
 
         //@todo Refactor view helper
         $view = new Url();
+        $config = new Config();
+        $assets = $config->get('assets');
 
         // Extract the parameters
         extract($params);

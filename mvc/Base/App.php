@@ -31,24 +31,6 @@ class App
             list($controller, $action) = $uri;
         }
 
-        // Run Installer if database config hasn't been configured
-        if (!file_exists(BASE_DIR . '/data/database/default.php')) {
-
-            if (empty($controller) && empty($action)) {
-                $controller = 'Installer';
-                $action     = 'Index';
-            }
-
-            $format = 'Mvc\Controller\%s';
-            $controller = sprintf($format, ucfirst($controller));
-
-            $this->controller = new $controller();
-
-            // run the controller action
-            return $this->controller->{'action' . ucfirst($action)}();
-
-        }
-
         // Load the config files
         $config = new Config();
 
@@ -73,7 +55,7 @@ class App
                 throw new \Exception('Default controller or default action not found');
             }
 
-            $action     = $config->get('default_action');
+            $action = $config->get('default_action');
         }
 
         $format = 'Mvc\Controller\%s';

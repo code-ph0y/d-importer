@@ -7,13 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Data Importer</title>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="<?php echo $view->assetUrl('bootstrap/dist/css/bootstrap.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo $view->assetUrl('handsontable/dist/handsontable.full.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo $view->assetUrl('font-awesome/css/font-awesome.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo $view->assetUrl('dropzone/dist/min/dropzone.min.css'); ?>" />
+        <?php foreach ($assets['css'] as $css) : ?>
+            <link rel="stylesheet" href="<?php echo $css; ?>" />
+        <?php endforeach; ?>
 
-        <link rel="stylesheet" href="<?php echo $view->assetUrl('my-app/css/style.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo $view->assetUrl('main.css'); ?>" />
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,15 +33,23 @@
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                <div class="btn-group mr-2" role="group" aria-label="First group">
-                                    <button id="run-template" type="button" class="btn btn-secondary">
-                                        <i class="fa fa-play" aria-hidden="true"></i>
+                            <div id="main-toolbar" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group me-2" role="group" aria-label="Second group">
+                                    <button data-page="datasources" id="datasources" type="button" class="btn btn-secondary">
+                                        <i class="bi bi-server" title="Datasources"></i>
+                                        Datasources
                                     </button>
                                 </div>
-                                <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary">
-                                        <i class="fa fa-table" aria-hidden="true"></i>
+                                <div class="btn-group me-2" data-url="" role="group" aria-label="Second group">
+                                    <button data-page="actions" id="actions" type="button" class="btn btn-secondary">
+                                        <i class="bi bi-diagram-2-fill"  title="Actions"></i>
+                                        Actions
+                                    </button>
+                                </div>
+                                <div class="btn-group me-2" data-url="" role="group" aria-label="First group">
+                                    <button data-page="run" id="run-template" type="button" class="btn btn-secondary">
+                                        <i class="bi bi-play-fill" aria-hidden="true" title="Run"></i>
+                                        Run
                                     </button>
                                 </div>
                             </div>
@@ -55,23 +61,20 @@
 
         <main class="container wrapper-lg">
             <div class="row align-items-center">
-                <div class="col-12">
+                <div id="partial-main" class="col-12">
                     <?php echo (!empty($body)) ? $body : ''; ?>
                 </div>
             </div>
         </main>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="<?php echo $view->assetUrl('jquery/dist/jquery.min.js'); ?>"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="<?php echo $view->assetUrl('bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
-        <script src="<?php echo $view->assetUrl('dropzone/dist/min/dropzone.min.js'); ?>"></script>
-        <script src="<?php echo $view->assetUrl('handsontable/dist/handsontable.full.min.js'); ?>"></script>
-        <script src="<?php echo $view->assetUrl('Split.js/split.min.js'); ?>"></script>
+        <?php foreach ($assets['js'] as $js) : ?>
+            <script src="<?php echo $js; ?>"></script>
+        <?php endforeach; ?>
+
+        <script src="<?php echo $view->assetUrl('main.js'); ?>"></script>
+
         <script>
             var baseurl = '<?php echo $view->baseUrl(); ?>';
         </script>
-
-        <script src="<?php echo $view->assetUrl('my-app/js/main.js'); ?>"></script>
     </body>
 </html>
