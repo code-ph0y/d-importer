@@ -1,3 +1,5 @@
+<h1>Output</h1>
+
 <div class="mb-3 mt-3">
     <button class="btn btn-success">
         <i class="bi bi-play-fill" aria-hidden="true" title="Output"></i>
