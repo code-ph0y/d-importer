@@ -51,12 +51,16 @@ class Controller {
     }
 
     /**
-     * @param $input
-     * @return false|string
+     * @param $view
+     * @param array $params
+     * @param string $template
+     * @return mixed
      */
-    public function renderJson($params) {
+    public function renderJson($view, $params = array(), $template = 'default.json.php') {
+        // Get flash message
         $params['flashMsg'] = $this->session->get('flashMsg');
-        return $this->view->render('', $params, 'default.json.php');
+
+        return $this->view->render($view, $params, $template);
     }
 
     /**

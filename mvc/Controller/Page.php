@@ -9,23 +9,17 @@ class Page extends BaseController
 {
     public function actionDatasources()
     {
-        return $this->renderJson([
-            'html' => '<h1>Datasources</h1>'
-        ]);
+        return $this->renderJson('page/datasource.html');
     }
 
     public function actionActions()
     {
-        return $this->renderJson([
-            'html' => '<h1>Actions</h1>'
-        ]);
+        return $this->renderJson('page/actions.html');
     }
 
 
-    public function actionRun()
+    public function actionOutput()
     {
-        return $this->renderJson([
-            'html' => '<h1>Run</h1>'
-        ]);
+        return $this->renderJson('page/output.html');
     }
 }

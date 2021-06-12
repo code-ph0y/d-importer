@@ -11,8 +11,6 @@
             <link rel="stylesheet" href="<?php echo $css; ?>" />
         <?php endforeach; ?>
 
-        <link rel="stylesheet" href="<?php echo $view->assetUrl('main.css'); ?>" />
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -36,7 +34,7 @@
                             <div id="main-toolbar" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 <div class="btn-group me-2" role="group" aria-label="Second group">
                                     <button data-page="datasources" id="datasources" type="button" class="btn btn-secondary">
-                                        <i class="bi bi-server" title="Datasources"></i>
+                                        <i class="fa fa-database" title="Datasources"></i>
                                         Datasources
                                     </button>
                                 </div>
@@ -47,9 +45,9 @@
                                     </button>
                                 </div>
                                 <div class="btn-group me-2" data-url="" role="group" aria-label="First group">
-                                    <button data-page="run" id="run-template" type="button" class="btn btn-secondary">
-                                        <i class="bi bi-play-fill" aria-hidden="true" title="Run"></i>
-                                        Run
+                                    <button data-page="output" id="output" type="button" class="btn btn-secondary">
+                                        <i class="bi bi-play-fill" aria-hidden="true" title="Output"></i>
+                                        Output
                                     </button>
                                 </div>
                             </div>
@@ -70,8 +68,6 @@
         <?php foreach ($assets['js'] as $js) : ?>
             <script src="<?php echo $js; ?>"></script>
         <?php endforeach; ?>
-
-        <script src="<?php echo $view->assetUrl('main.js'); ?>"></script>
 
         <script>
             var baseurl = '<?php echo $view->baseUrl(); ?>';

@@ -32,7 +32,6 @@ class View {
         include 'mvc/View/' . $filename;
         $body = ob_get_clean();
 
-
         if (file_exists('mvc/View/template/' . $template)) {
             require 'mvc/View/template/' . $template;
         } else {
