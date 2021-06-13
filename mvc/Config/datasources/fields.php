@@ -2,8 +2,8 @@
 
 $fields['datasources']['fields'] = [
     'fieldName' => 'id',
-    'type' => 'hash',
-    'len' => '255'
+    'type' => 'md5',
+    'len' => '32'
 ];
 
 $fields['datasources']['fields'] = [
