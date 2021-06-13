@@ -16,22 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>My Database</td>
-                <td>Database (Mysql)</td>
-                <td>
-                    <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-danger">Remove</button>
-                </td>
-            </tr>
-            <tr>
-                <td>My Spreadsheet</td>
-                <td>Spreadsheet</td>
-                <td>
-                    <button class="btn btn-primary">Edit</button>
-                    <button class="btn btn-danger">Remove</button>
-                </td>
-            </tr>
+            <?php foreach ($datasources as $datasource) : ?>
+                <tr>
+                    <td><?php echo $datasource['name']; ?></td>
+                    <td><?php echo $datasource['type']; ?></td>
+                    <td>
+                        <a href="page/datasource/edit/<?php echo $datasource['id']; ?>" class="btn btn-primary">Edit</a>
+                        <a href="page/datasource/remove/<?php echo $datasource['id']; ?>" class="btn btn-danger">Remove</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
