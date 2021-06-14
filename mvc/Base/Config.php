@@ -17,6 +17,9 @@ class Config
         require 'mvc/Config/application.php';
         require 'mvc/Config/route.php';
         require 'mvc/Config/assets.php';
+        require 'mvc/Config/fields/datasources/fields.php';
+        require 'mvc/Config/fields/datasources/types/spreadsheet.php';
+        require 'mvc/Config/fields/datasources/types/mysql.php';
 
         $this->params = $config;
     }

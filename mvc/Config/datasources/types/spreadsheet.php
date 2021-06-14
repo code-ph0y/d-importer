@@ -1,4 +1,0 @@
-<?php
-
-$fields['datasources']['fields'] = [
-];
