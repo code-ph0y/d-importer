@@ -40,10 +40,10 @@ build/Release
 node_modules/
 jspm_packages/
 
-assets/*
+public/assets/*
 
-!assets/file
-!assets/my-app/*
+!public/assets/file
+!public/assets/my-app/*
 
 /vendor/
 

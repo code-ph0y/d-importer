@@ -2,10 +2,26 @@
 
 namespace Mvc\Base;
 
-use Mvc\Helper\Url;
+use Mvc\Base\Helper;
 use Mvc\Base\Config;
 
 class View {
+
+    /**
+     * @var ViewHelper|null
+     */
+    public $helper = null;
+
+    /**
+     * @var Config|null
+     */
+    public $config = null;
+
+    public function __construct(Config $config, ViewHelper $helper)
+    {
+        $this->config = $config;
+        $this->helper = $helper;
+    }
 
     /**
      * Render the view file and pass it to the templates
@@ -19,21 +35,19 @@ class View {
         // Allow the view param to work with and with the .php
         $filename = (strpos($filename, '.php') !== false) ? $filename : $filename . '.php';
 
-        //@todo Refactor view helper
-        $view = new Url();
-        $config = new Config();
-        $assets = $config->get('assets');
+        $view = $this->helper;
+        $config = $this->config;
 
         // Extract the parameters
         extract($params);
 
         // Get the file contents of the view file
         ob_start();
-        include 'mvc/View/' . $filename;
+        include BASE_DIR . '/src/View/' . $filename;
         $body = ob_get_clean();
 
-        if (file_exists('mvc/View/template/' . $template)) {
-            require 'mvc/View/template/' . $template;
+        if (file_exists(BASE_DIR . '/src/View/template/' . $template)) {
+            require BASE_DIR . '/src/View/template/' . $template;
         } else {
             echo $body;
         }

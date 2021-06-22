@@ -6,5 +6,5 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-l
 
-    RewriteRule ^(.*)$ index.php?query_string=$1 [L] 
+    RewriteRule ^(.*)$ public/index.php?query_string=$1 [L]
 </IfModule>

@@ -10,4 +10,4 @@ $config['default_controller'] = 'Home';
 $config['default_action'] = 'Index';
 
 // The upload question
-$config['upload_dir'] = __DIR__  . '/../../data/files/uploaded/';
+$config['upload_dir'] = __DIR__ . '/../../instance/files/uploaded/';

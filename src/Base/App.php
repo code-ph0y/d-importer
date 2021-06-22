@@ -17,12 +17,16 @@ class App
     public function run()
     {
         // Create new input helper to get query_string
-        $input  = new Input();
+        $input = new Input();
 
         // Check the correct controller and action is going to load based on the URI
         if ($input->has('query_string')) {
-
             $uri = explode('/', $input->get('query_string'));
+
+            if ($uri[0] == 'public') {
+                unset($uri[0]);
+                $uri = array_values($uri);
+            }
 
             if (count($uri) < 2) {
                 $uri[] = $action;
@@ -61,7 +65,19 @@ class App
         $format = 'Mvc\Controller\%s';
         $controller = sprintf($format, ucfirst($controller));
 
-        $this->controller = new $controller();
+        $model = new \Mvc\Base\Model();
+        $session = new \Mvc\Helper\Session();
+        $file_system = new \Mvc\Helper\FileSystem();
+
+        $helper = new \Mvc\Base\Helper($file_system, $session, $input);
+
+        $url = new \Mvc\Helper\Url();
+
+        $viewHelper = new \Mvc\Base\ViewHelper($url, $config->get('assets'));
+
+        $view = new \Mvc\Base\View($config, $viewHelper);
+
+        $this->controller = new $controller($config, $input, $view, $model, $helper);
 
         // run the controller action
         return $this->controller->{'action' . ucfirst($action)}();

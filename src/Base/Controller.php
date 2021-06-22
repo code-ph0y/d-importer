@@ -16,26 +16,28 @@ class Controller {
     protected $session = null;
     protected $view    = null;
     protected $model   = null;
+    protected $helper  = null;
 
     /**
      * Load base controller variables
      */
-    public function __construct()
+    public function __construct(Config $config, Input $input, View $view, Model $model, Helper $helper)
     {
-        $this->config  = new Config();
-        $this->session = new Session();
+        $this->config  = $config;
 
+        $this->input = $input;
+        $this->helper = $helper;
+
+        $this->session = $this->helper->getSession();
         $this->session->startSession();
-
-        $this->input   = new Input();
 
         if ($this->session->has('redirectPost')) {
             $this->input->setPost(false, $this->session->get('redirectPost'));
             $this->session->unset('redirectPost');
         }
 
-        $this->view  = new View();
-        $this->model = new Model();
+        $this->view  = $view;
+        $this->model = $model;
     }
 
     /**

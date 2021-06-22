@@ -13,13 +13,13 @@ class Config
      */
     public function __construct()
     {
-        require 'mvc/Config/database.php';
-        require 'mvc/Config/application.php';
-        require 'mvc/Config/route.php';
-        require 'mvc/Config/assets.php';
-        require 'mvc/Config/fields/datasources/fields.php';
-        require 'mvc/Config/fields/datasources/types/spreadsheet.php';
-        require 'mvc/Config/fields/datasources/types/mysql.php';
+        require BASE_DIR . '/src/Config/database.php';
+        require BASE_DIR . '/src/Config/application.php';
+        require BASE_DIR . '/src/Config/route.php';
+        require BASE_DIR . '/src/Config/assets.php';
+        require BASE_DIR . '/src/Config/fields/datasources/fields.php';
+        require BASE_DIR . '/src/Config/fields/datasources/types/spreadsheet.php';
+        require BASE_DIR . '/src/Config/fields/datasources/types/mysql.php';
 
         $this->params = $config;
     }

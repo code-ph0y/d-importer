@@ -18,11 +18,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "Mvc\\": "mvc/",
-            "Mvc\\Base\\": "mvc/Base/",
-            "Mvc\\Controller\\": "mvc/Controller/",
-            "Mvc\\Helper\\": "mvc/Helper/",
-            "Mvc\\Model\\": "mvc/Model/"
+            "Mvc\\": "src/",
+            "Mvc\\Base\\": "src/Base/",
+            "Mvc\\Controller\\": "src/Controller/",
+            "Mvc\\Helper\\": "src/Helper/",
+            "Mvc\\Model\\": "src/Model/"
         }
     }
 }
