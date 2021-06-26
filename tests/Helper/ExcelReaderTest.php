@@ -1,20 +1,18 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Mvc\Helper\ExcelReader;
-use Mvc\Base\Config;
 
 final class ExcelReaderTest extends TestCase
 {
-    public function testDate()
+    protected function setUp(): void
     {
-        $config      = new Config();
-        $excelreader = new ExcelReader();
+    }
 
-        $file_path = $config->get('upload_dir') . 'example.xls';
-
-        $excelData = $excelreader->readToAssoc($file_path);
-
-        $this->assertEquals('20/10/2018', $excelData[1][2]);
+    public function testTestIncomplete(): void
+    {
+        // Stop here and mark this test as incomplete.
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
     }
 }
