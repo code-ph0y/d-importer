@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 use Mvc\Helper\ExcelReader;
 use Mvc\Base\Config;
 
-class ExcelReaderTest extends TestCase
+final class ExcelReaderTest extends TestCase
 {
     public function testDate()
     {
