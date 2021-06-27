@@ -11,10 +11,15 @@
             <directory>./src/Config</directory>
             <directory>./src/View</directory>
         </exclude>
+        <report>
+            <html outputDirectory="./logs/coverage" lowUpperBound="50" highLowerBound="90"/>
+        </report>
     </coverage>
+
     <testsuites>
         <testsuite name="Data Importer Test Suite">
             <directory suffix=".php">./tests/</directory>
+            <exclude>./tests/TestAssets</exclude>
         </testsuite>
     </testsuites>
 </phpunit>
