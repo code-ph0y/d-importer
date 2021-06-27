@@ -2,6 +2,8 @@
 
 namespace Mvc\Base;
 
+use Mvc\Helper\FileSystem;
+
 class Config
 {
     protected $params = null;
@@ -11,15 +13,15 @@ class Config
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(FileSystem $file_system, $config_path = BASE_DIR . "/src/Config/")
     {
-        require BASE_DIR . '/src/Config/database.php';
-        require BASE_DIR . '/src/Config/application.php';
-        require BASE_DIR . '/src/Config/route.php';
-        require BASE_DIR . '/src/Config/assets.php';
-        require BASE_DIR . '/src/Config/fields/datasources/fields.php';
-        require BASE_DIR . '/src/Config/fields/datasources/types/spreadsheet.php';
-        require BASE_DIR . '/src/Config/fields/datasources/types/mysql.php';
+        $config = [];
+
+        $dirs = $file_system->getFiles($config_path);
+
+        foreach ($dirs as $file) {
+            require $file;
+        }
 
         $this->params = $config;
     }
