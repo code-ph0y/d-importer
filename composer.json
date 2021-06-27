@@ -24,7 +24,8 @@
             "Mvc\\Base\\": "src/Base/",
             "Mvc\\Controller\\": "src/Controller/",
             "Mvc\\Helper\\": "src/Helper/",
-            "Mvc\\Model\\": "src/Model/"
+            "Mvc\\Model\\": "src/Model/",
+            "Mvc\\Tests\\TestAssets\\Classes\\": "tests/TestAssets/Classes"
         }
     }
 }
