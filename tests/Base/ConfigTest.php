@@ -52,19 +52,42 @@ class ConfigTest extends BaseTestCase
 
     public function testConfigSet(): void
     {
-        // Stop here and mark this test as incomplete.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $config1Before = $this->config->get('config1');
+
+        $beforeExpected = [
+            'key1' => 'String Text',
+            'key2' => 2,
+            'key3' => [
+                'key3_key1' => 2.3
+            ]
+        ];
+
+        $this->assertSame($beforeExpected, $config1Before);
+
+        $valueToSet = [
+            'changedKey1' => 'String Text'
+        ];
+
+        $this->config->set('config1', $valueToSet);
+
+        $afterExpected = [
+            'changedKey1' => 'String Text'
+        ];
+
+        $config1After = $this->config->get('config1');
+
+        $this->assertSame($afterExpected, $config1After);
     }
 
     public function testConfigHas(): void
     {
-        // Stop here and mark this test as incomplete.
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
+        $configDoesNotExist = $this->config->has('config4');
 
+        $this->assertFalse($configDoesNotExist);
+
+        $configDoesExist = $this->config->has('config1');
+
+        $this->assertTrue($configDoesExist);
 
     }
 }
