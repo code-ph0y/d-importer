@@ -21,7 +21,7 @@ class Helper
     /**
      * @var Input|null
      */
-    protected $input = null;
+    protected ?Input $input = null;
 
     /**
      * Helper constructor.
